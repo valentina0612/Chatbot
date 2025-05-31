@@ -6,11 +6,11 @@ const fs = require('fs');
 const path = require('path');
 const client = new Client();
 
-const corpus = require('./Mensajes/corpus.js');
-const mensajeBienvenida = require('./Mensajes/bienvenida.js');
+const corpus = require('./mensajes//corpus/corpus.js');
+const mensajeBienvenida = require('./mensajes/mensajeBienvenida.js');
 const logo = MessageMedia.fromFilePath('./media/bienvenida.jpeg');
 const contactos = require('./contactos.js');
-const preguntasDesconocidas =  path.join(__dirname, 'Preguntas', 'preguntasDesconocidas.json');
+const preguntasDesconocidas =  path.join(__dirname, 'mensajes', 'preguntasDesconocidas.json');
 
 
 function guardarPreguntaDesconocida(pregunta) {
@@ -40,14 +40,20 @@ function buscarRespuesta(inputUsuario) {
     const puntuacion = stringSimilarity(inputUsuario.toLowerCase(), item.pregunta.toLowerCase());
     if (puntuacion > mejorCoincidencia.puntuacion) {
       mejorCoincidencia = { puntuacion, respuesta: item.respuesta };
+      if(item.imagen) {
+        mejorCoincidencia = { ...mejorCoincidencia, imagen: MessageMedia.fromFilePath(item.imagen) };
+      }
     }
   });
   // Si la puntuación no es suficiente, guardar la pregunta
   if (mejorCoincidencia.puntuacion <= 0.7) {
     guardarPreguntaDesconocida(inputUsuario);
   }
-
-  return mejorCoincidencia.respuesta;
+  if (mejorCoincidencia.imagen) {
+    return { respuesta: mejorCoincidencia.respuesta,
+             imagen: mejorCoincidencia.imagen };
+  }
+  return { respuesta: mejorCoincidencia.respuesta };
 }
 
 // WhatsApp
@@ -93,8 +99,11 @@ client.on('message', message => {
 
   // Esperar 10 segundos antes de enviar la respuesta
   setTimeout(() => {
-    console.log('Enviando respuesta:', respuesta);
-    client.sendMessage(message.from, respuesta);
+    console.log('Enviando respuesta:', respuesta.respuesta);
+    client.sendMessage(message.from, respuesta.respuesta);
+    if (respuesta.imagen) {
+      client.sendMessage(message.from, respuesta.imagen);
+    }
   }, 10000);
 });
 
