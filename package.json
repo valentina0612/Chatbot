@@ -1,0 +1,30 @@
+{
+  "name": "chatbot",
+  "version": "1.0.0",
+  "description": "Chatbot comercial",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/valentina0612/Chatbot.git"
+  },
+  "keywords": [
+    "chatbot",
+    "PLN"
+  ],
+  "author": "Valentina Beca Garcia",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/valentina0612/Chatbot/issues"
+  },
+  "homepage": "https://github.com/valentina0612/Chatbot#readme",
+  "dependencies": {
+    "chatbot": "file:",
+    "natural": "^8.1.0",
+    "qrcode-terminal": "^0.12.0",
+    "whatsapp-web.js": "^1.28.0"
+  }
+}
