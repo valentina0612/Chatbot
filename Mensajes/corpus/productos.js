@@ -5,6 +5,21 @@ const productos = [
     respuesta: "🎂 Hacemos pasteles personalizados para todo tipo de eventos: cumpleaños, bodas, baby showers y más 💕"
   },
   {
+    pregunta: "¿Puedo ver su menú de pasteles?",
+    respuesta: "📜 ¡Claro! Tenemos un menú con una variedad de sabores y diseños. ¡Pregunta por el que más te guste! 🍰",
+    imagen: "./media/menu.png"
+  },
+  {
+    pregunta: "Quiero ver su menú",
+    respuesta: "📜 ¡Claro! Tenemos un menú con una variedad de sabores y diseños. ¡Pregunta por el que más te guste! 🍰",
+    imagen: "./media/menu.png"
+  },
+  {
+    pregunta: "Mandame su menú",
+    respuesta: "📜 ¡Claro! Tenemos un menú con una variedad de sabores y diseños. ¡Pregunta por el que más te guste! 🍰",
+    imagen: "./media/menu.png"
+  },
+  {
     pregunta: "¿Puedo personalizar un pastel?",
     respuesta: "🎨 ¡Por supuesto! Puedes elegir el diseño, sabor, relleno y decoración. ¡Tu pastel, tu estilo! ✨"
   },

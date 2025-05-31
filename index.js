@@ -1,111 +1,69 @@
+// Importaciones 
 const qrcode = require('qrcode-terminal');
-const { Client, MessageMedia } = require('whatsapp-web.js');
-const natural = require('natural');
-const stringSimilarity = natural.JaroWinklerDistance;
-const fs = require('fs');
-const path = require('path');
+const { Client } = require('whatsapp-web.js');
+const { MessageMedia } = require('whatsapp-web.js');
+const buscarRespuesta = require('./utils/respuesta');
+const mensajeBienvenida = require('./mensajes/mensajeBienvenida');
+const contactos = require('./contactos');
+
+// Inicialización del cliente de WhatsApp
 const client = new Client();
 
-const corpus = require('./mensajes//corpus/corpus.js');
-const mensajeBienvenida = require('./mensajes/mensajeBienvenida.js');
-const logo = MessageMedia.fromFilePath('./media/bienvenida.jpeg');
-const contactos = require('./contactos.js');
-const preguntasDesconocidas =  path.join(__dirname, 'mensajes', 'preguntasDesconocidas.json');
-
-
-function guardarPreguntaDesconocida(pregunta) {
-  let preguntas = [];
-
-  try {
-    if (fs.existsSync(preguntasDesconocidas)) {
-      const data = fs.readFileSync(preguntasDesconocidas, 'utf8');
-      preguntas = JSON.parse(data);
-    }
-
-    if (!preguntas.includes(pregunta)) {
-      preguntas.push({ pregunta: pregunta, respuesta: "Lo siento, no entendí tu pregunta." });
-      fs.writeFileSync(preguntasDesconocidas, JSON.stringify(preguntas, null, 2), 'utf8');
-      console.log('Pregunta desconocida guardada:', pregunta);
-    }
-  } catch (err) {
-    console.error('Error al guardar pregunta desconocida:', err);
-  }
-}
-
-
-function buscarRespuesta(inputUsuario) {
-  let mejorCoincidencia = { puntuacion: 0.7, respuesta: "Lo siento, no entendí tu pregunta." };
-
-  corpus.forEach(item => {
-    const puntuacion = stringSimilarity(inputUsuario.toLowerCase(), item.pregunta.toLowerCase());
-    if (puntuacion > mejorCoincidencia.puntuacion) {
-      mejorCoincidencia = { puntuacion, respuesta: item.respuesta };
-      if(item.imagen) {
-        mejorCoincidencia = { ...mejorCoincidencia, imagen: MessageMedia.fromFilePath(item.imagen) };
-      }
-    }
-  });
-  // Si la puntuación no es suficiente, guardar la pregunta
-  if (mejorCoincidencia.puntuacion <= 0.7) {
-    guardarPreguntaDesconocida(inputUsuario);
-  }
-  if (mejorCoincidencia.imagen) {
-    return { respuesta: mejorCoincidencia.respuesta,
-             imagen: mejorCoincidencia.imagen };
-  }
-  return { respuesta: mejorCoincidencia.respuesta };
-}
-
-// WhatsApp
+// Mostrar el código QR en consola
 client.on('qr', (qr) => {
   qrcode.generate(qr, { small: true });
 });
 
-
+// Cliente listo: enviar mensaje de bienvenida a cada contacto
 client.on('ready', async () => {
   console.log('Cliente listo para recibir mensajes');
 
   for (const numero of contactos) {
     try {
-      await client.sendMessage(numero, logo);
-      await client.sendMessage(numero, mensajeBienvenida);
-      console.log(`Mensaje enviado correctamente`);
+      const imagen = MessageMedia.fromFilePath(mensajeBienvenida.imagen);
+      await client.sendMessage(numero, imagen);
+      await client.sendMessage(numero, mensajeBienvenida.mensaje);
+      console.log(`Mensaje de bienvenida enviado a ${numero}`);
     } catch (error) {
-      console.error(`Error al enviar mensaje:`, error);
+      console.error(`Error al enviar mensaje a ${numero}:`, error);
     }
   }
-})
+});
 
+// Autenticación y desconexión
 client.on('authenticated', () => {
   console.log('Cliente autenticado');
 });
 
-client.on('auth_failure', msg => {
-    console.error('Error de autenticación:', msg);
-    });
+client.on('auth_failure', (msg) => {
+  console.error('Error de autenticación:', msg);
+});
 
 client.on('disconnected', (reason) => {
-    console.log('Cliente desconectado:', reason);
-    client.destroy();
-    client.initialize();
-  });
+  console.log('Cliente desconectado:', reason);
+  client.destroy();
+  client.initialize();
+});
 
+// Manejo de errores
+client.on('error', (error) => {
+  console.error('Error del cliente:', error);
+});
 
-// Escucha mensajes entrantes
-client.on('message', message => {
+// Manejo de mensajes entrantes
+client.on('message', (message) => {
   console.log('Mensaje recibido:', message.body);
 
   const respuesta = buscarRespuesta(message.body);
 
-  // Esperar 10 segundos antes de enviar la respuesta
   setTimeout(() => {
     console.log('Enviando respuesta:', respuesta.respuesta);
     client.sendMessage(message.from, respuesta.respuesta);
     if (respuesta.imagen) {
       client.sendMessage(message.from, respuesta.imagen);
     }
-  }, 10000);
+  }, 10000); // 10 segundos de espera
 });
 
-
+// Inicializar cliente
 client.initialize();

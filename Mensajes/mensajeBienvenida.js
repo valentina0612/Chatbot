@@ -1,10 +1,12 @@
-const mensajeBienvenida = `🎀 ¡Bienvenidos a Dulce Encanto! 🎀
-Aquí cada bocado es una historia de amor a primera mordida.
+const mensajeBienvenida = 
+    {
+        mensaje:`🍓✨ ¡Hola! Soy *Dulce*, tu asistente virtual en *Dulce Encanto* ✨🍓  
+Estoy aquí para ayudarte a descubrir los pasteles más deliciosos y especiales.  
 
-Te invitamos a descubrir nuestros exquisitos pasteles, elaborados con pasión, ingredientes de la más alta calidad y un toque de ternura. 
-En Dulce Encanto tenemos justo lo que necesitas para endulzar tus momentos más especiales.
+Donde cada pastel cuenta una historia... ¡y cada mordida es puro amor! 💕  
+Sumérgete en un mundo de sabores irresistibles, hechos con ingredientes selectos, mucho cariño y un toque mágico de ternura. 🎂💖`,
+        imagen: "./media/bienvenida.jpeg"
+    }
 
-✨ ¡Conócenos y déjate enamorar!
-📦 Haz tu pedido hoy mismo y vive la experiencia Dulce Encanto.`;
 
 module.exports = mensajeBienvenida;

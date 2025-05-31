@@ -2,7 +2,19 @@
 const pedidos = [
   {
     pregunta: "¿Cómo puedo hacer un pedido?",
-    respuesta: "📞 Puedes hacer tu pedido llamando al 123-456-7890. ¡Será un placer atenderte! 😊"
+    respuesta: "Para hacer un pedido, simplemente envíanos un mensaje con tus deseos y nosotros te ayudamos a crear el pastel perfecto 🎂✨"
+  },
+  {
+    pregunta: "¿Qúe hacer si quiero un pastel personalizado?",
+    respuesta: "¡Genial! Solo envíanos un mensaje con tus ideas y nosotros te ayudamos a diseñar el pastel ideal para ti 🎉"
+  },
+  {
+    pregunta: "Quiero un pastel de sabor y con decoración",
+    respuesta:"¡Perfecto! Danos tus datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖"
+  },
+  {
+    pregunta: "Mis datos son: nombre, dirección, teléfono, fecha y hora de entrega",
+    respuesta: "¡Gracias por la información! Con esos datos, podemos preparar tu pastel y coordinar la entrega. ¡Será un placer atenderte! 🎂🚚"
   },
   {
     pregunta: "¿Puedo hacer un pedido especial para una ocasión?",
