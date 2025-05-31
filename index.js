@@ -6,8 +6,8 @@ const fs = require('fs');
 const path = require('path');
 const client = new Client();
 
-const corpus = require('./Preguntas/corpus.js');
-const mensajeBienvenida = require('./bienvenida.js');
+const corpus = require('./Conversacion/corpus.js');
+const mensajeBienvenida = require('./Conversacion/bienvenida.js');
 const logo = MessageMedia.fromFilePath('./media/bienvenida.jpeg');
 const contactos = require('./contactos.js');
 const preguntasDesconocidas =  path.join(__dirname, 'Preguntas', 'preguntasDesconocidas.json');
