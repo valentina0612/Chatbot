@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const preguntasDesconocidas = path.join(__dirname, '..', 'mensajes', 'preguntasDesconocidas.json');
+const preguntasDesconocidas = path.join(__dirname, '..', 'corpus_mensajes', 'preguntasDesconocidas.json');
 
 function guardarPreguntaDesconocida(pregunta) {
   let preguntas = [];
