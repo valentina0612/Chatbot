@@ -3,7 +3,7 @@ const qrcode = require('qrcode-terminal');
 const { Client } = require('whatsapp-web.js');
 const { MessageMedia } = require('whatsapp-web.js');
 const buscarRespuesta = require('./utils/respuesta');
-const mensajeBienvenida = require('./mensajes/mensajeBienvenida');
+const mensajeBienvenida = require('./corpus_mensajes/mensajeBienvenida');
 const contactos = require('./contactos');
 
 // Inicialización del cliente de WhatsApp
