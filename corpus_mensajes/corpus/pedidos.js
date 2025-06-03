@@ -2,19 +2,31 @@
 const pedidos = [
   {
     pregunta: "¿Cómo puedo hacer un pedido?",
-    respuesta: "Para hacer un pedido, simplemente envíanos un mensaje con tus deseos y nosotros te ayudamos a crear el pastel perfecto 🎂✨"
+    respuesta: "Danos estos datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖\n Nombre: \n Sabor: \n Decoración: \n Fecha y hora de entrega: \n Dirección de entrega: \n Teléfono de contacto:"
   },
   {
     pregunta: "¿Qúe hacer si quiero un pastel personalizado?",
     respuesta: "¡Genial! Solo envíanos un mensaje con tus ideas y nosotros te ayudamos a diseñar el pastel ideal para ti 🎉"
   },
   {
-    pregunta: "Quiero un pastel de sabor y con decoración",
-    respuesta:"¡Perfecto! Danos tus datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖"
+    pregunta: "Quiero un pastel de sabor y decorado",
+    respuesta:"¡Perfecto! Danos estos datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖\n Nombre: \n Fecha y hora de entrega: \n Dirección de entrega: \n Teléfono de contacto: "
   },
   {
-    pregunta: "Mis datos son: nombre, dirección, teléfono, fecha y hora de entrega",
+    pregunta: "Quiero un pastel de sabor",
+    respuesta:"¡Perfecto! Danos estos datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖\n Nombre: \n Decoración: \n Fecha y hora de entrega: \n Dirección de entrega: \n Teléfono de contacto: "
+  },
+    {
+    pregunta: "Quiero un pastel decorado",
+    respuesta:"¡Perfecto! Danos estos datos y nosotros crearemos un pastel delicioso y hermoso para ti 🍰💖\n Nombre: \n Sabor: \n Fecha y hora de entrega: \n Dirección de entrega: \n Teléfono de contacto: "
+  },
+  {
+    pregunta: "Mis datos son: nombre, sabor, decoración, fecha y hora de entrega, dirección de entrega y teléfono de contacto.",
     respuesta: "¡Gracias por la información! Con esos datos, podemos preparar tu pastel y coordinar la entrega. ¡Será un placer atenderte! 🎂🚚"
+  },
+  {
+    pregunta: "Nombre: \n Sabor: \n Decoración: \n Fecha y hora de entrega: \n Dirección de entrega: \n Teléfono de contacto: ",
+    respuesta: "¡Perfecto! Con esos datos, podemos preparar tu pastel y coordinar la entrega. ¡Será un placer atenderte! 🎂🚚"
   },
   {
     pregunta: "¿Puedo hacer un pedido especial para una ocasión?",
@@ -26,7 +38,7 @@ const pedidos = [
   },
   {
     pregunta: "¿Qué precio tiene un pastel?",
-    respuesta: "💰 Nuestros pasteles comienzan desde $60.000, según el tamaño y la personalización 🎂"
+    respuesta: "💰 Nuestros pasteles comienzan desde $10, según el tamaño y la personalización 🎂"
   },
   {
     pregunta: "¿Puedo cancelar o modificar mi pedido?",
