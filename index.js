@@ -39,10 +39,9 @@ client.on('auth_failure', (msg) => {
   console.error('Error de autenticación:', msg);
 });
 
-client.on('disconnected', (reason) => {
+client.on('disconnected', async (reason) => {
   console.log('Cliente desconectado:', reason);
-  client.destroy();
-  client.initialize();
+  await client.destroy();
 });
 
 // Manejo de errores

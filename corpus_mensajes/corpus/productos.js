@@ -20,6 +20,11 @@ const productos = [
     imagen: "./media/menu.png"
   },
   {
+    pregunta:"Menú",
+    respuesta: "📜 ¡Claro! Tenemos un menú con una variedad de sabores y diseños. ¡Pregunta por el que más te guste! 🍰",
+    imagen: "./media/menu.png"
+  },
+  {
     pregunta: "¿Puedo personalizar un pastel?",
     respuesta: "🎨 ¡Por supuesto! Puedes elegir el diseño, sabor, relleno y decoración. ¡Tu pastel, tu estilo! ✨"
   },
@@ -54,6 +59,26 @@ const productos = [
   {
     pregunta: "¿Cuál es el máximo de pisos que puede tener un pastel?",
     respuesta: "🏰 Podemos hacer pasteles de hasta 4 pisos. ¡Ideales para bodas y eventos grandes! Elegantes, firmes y deliciosos 💒✨"
+  },
+  {
+    pregunta: "Recomienda opciones",
+    respuesta: "🍫 Nuestro pastel de chocolate es delicioso ¡Deberías probarlo!."
+  },
+  {
+    pregunta: "Recomienda un  pastel",
+    respuesta: "🍫 Nuestro pastel de chocolate es delicioso ¡Deberías probarlo!."
+  },
+  {
+    pregunta: "Quiero que me recomiendes un pastel",
+    respuesta: "🍫 Nuestro pastel de chocolate es delicioso ¡Deberías probarlo!."
+  },
+  {
+    pregunta: "¿Qué pastel me recomiendas?",
+    respuesta: "🍫 Nuestro pastel de chocolate es delicioso ¡Deberías probarlo!."
+  },
+  {
+    pregunta: "¿Qué pastel debería probar?",
+    respuesta: "🍫 Nuestro pastel de chocolate es delicioso ¡Deberías probarlo!."
   },
 ];
 
